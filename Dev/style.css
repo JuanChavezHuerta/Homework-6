@@ -1,7 +1,17 @@
+/* .row {
+    border: solid 2px green;
+} */
 
 
-.btn {
-    margin-top: 5%;
-    margin-left: 2%;
+
+/* .main-container {
+    border: solid 2px orange;
+} */
+
+.zip-row {
+    margin-top: 10%;
 }
 
+.btn-small {
+    margin-top: 50%;
+}
