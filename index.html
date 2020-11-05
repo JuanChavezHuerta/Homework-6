@@ -7,6 +7,8 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./Dev/style.css">
+    <!-- Jquery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <title>Weather App</title>
@@ -30,7 +32,7 @@
     <div class="col s4">
       <!-- row with the userinput field and a button -->
       <div class="row zip-row">
-      <div class="input-field col s6">
+      <div class="input-field userInput col s6">
         <input placeholder="80210" type="text">
         <label>Zip Code</label>
       </div>
@@ -52,27 +54,33 @@
   
   <!-- Column for the search history to appear -->
   <div class="row">
+    <!-- first result -->
     <div class="col s4"><div class="divider"></div>
     <div class="section">
-      <h5></h5>
+      <h5>1<h5>
     </div>
+    <!-- second result -->
     <div class="divider"></div>
     <div class="section">
-      <h5></h5>
+      <h5>2</h5>
     </div>
+    <!-- third result -->
     <div class="divider"></div>
     <div class="section">
-      <h5></h5>
+      <h5>3</h5>
     </div>
+    <!-- fourth result -->
     <div class="divider"></div>
     <div class="section">
-      <h5></h5>
+      <h5>4</h5>
     </div>
+    <!-- fifth result -->
     <div class="divider"></div>
     <div class="section">
-      <h5></h5>
+      <h5>5</h5>
     </div>
     </div>
+    <!-- container with the forcast cards -->
     <div class="col s8">
       <h5>Forecast</h5>
       <div class="row">
