@@ -22,9 +22,7 @@ $(document).ready(function() {
         $.ajax({
         url: requestURL,
         method: 'GET'
-        }).then().catch((e)=>{
-            console.log(e);
-        });
+        }).then();
    
 
     };
