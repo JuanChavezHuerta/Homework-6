@@ -14,9 +14,6 @@ $(document).ready(function() {
 
         
 
-        // test to see if button works
-        console.log(zip);
-
 
         // // AJAX call
         $.ajax({
@@ -34,7 +31,6 @@ $(document).ready(function() {
 
     //EVENT LISTENERS
     $('#myButton').on('click', function(){
-        console.log('ive been clicked')
         var zip = $('#myZip').val()
         // console.log()
         getZip(zip);
