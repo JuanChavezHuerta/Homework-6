@@ -10,7 +10,7 @@ $(document).ready(function() {
     
     var getZip = function(zip) {
         //var for getting weather back
-        var requestURL = "api.openweathermap.org/data/2.5/weather?zip=80210,us&appid=6f5ea58cb35532d1813901385fee7376"
+        var requestURL = "https://api.openweathermap.org/data/2.5/weather?zip=" + zip + ",us&appid=6f5ea58cb35532d1813901385fee7376"
 
         
 
@@ -19,7 +19,25 @@ $(document).ready(function() {
         $.ajax({
         url: requestURL,
         method: 'GET'
-        }).then();
+        })
+        .then(function(data){
+            console.log(data);
+            var cityName = data.name
+
+            $('.city').each(function(){
+                if ($(this).text() === ''){
+                    // this.
+                    console.log(this.class)
+                    
+                }
+
+            });
+            
+
+
+
+        })
+
    
 
     };
