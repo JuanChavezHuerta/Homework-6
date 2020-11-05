@@ -10,7 +10,7 @@ $(document).ready(function() {
     
     var getZip = function(zip) {
         //var for getting weather back
-        var requestURL = 'api.openweathermap.org/data/2.5/weather?zip=80210,us&appid=ebc53887a83232974059f9adb2445958'
+        var requestURL = "api.openweathermap.org/data/2.5/weather?zip=80210,us&appid=ebc53887a83232974059f9adb2445958"
 
         
 
@@ -36,6 +36,7 @@ $(document).ready(function() {
 
     //EVENT LISTENERS
     $('#myButton').on('click', function(){
+        console.log('ive been clicked')
         var zip = $('#myZip').val()
         // console.log()
         getZip(zip);
