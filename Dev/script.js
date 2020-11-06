@@ -27,7 +27,7 @@ $(document).ready(function() {
             $('.city').each(function(){
                 if ($(this).text() === ''){
                     // this.
-                    console.log(this.class)
+                    $('.city').append(cityName)
                     
                 }
 
