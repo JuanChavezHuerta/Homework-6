@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     //FOR ZIP CODE SECTION, create event listener button, create a function that will handle ajax call(similar to fetch API)
     
-
+    // LOCAL STORAGE
     
     
     //FUNCTIONS
@@ -48,6 +48,8 @@ $(document).ready(function() {
 
 
     //EVENT LISTENERS
+
+    // when someone clicks the button its going to store the value thats inside the id: myButton 
     $('#myButton').on('click', function(){
         var zip = $('#myZip').val()
         // console.log()
