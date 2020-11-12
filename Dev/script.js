@@ -4,13 +4,45 @@ $(document).ready(function() {
     
     
     
-    //FUNCTIONS
+    var history = [];
+    if(JSON.parse(localStorage.getItem('cityNames')) !== null){
+    history = JSON.parse(localStorage.getItem('cityNames'));
+    // console.log(history);
 
-    var history = JSON.parse(localStorage.getItem('cityNames'));
-    console.log(history);
+    if(history.length > 0){
+        for(i = 0; i < history.length;i++){
 
-    // empty array for city names
-    var cityNames = [];
+            cityDisplay(history[i]);
+            
+        }
+    }};
+
+
+
+
+    
+
+
+    function cityDisplay(value){
+        
+        var section = $('#mySection');
+        var divider = $('<div class="divider">');
+        var h5 = $('<h5>' + value + '</h5>');
+
+
+
+        section.append(divider);
+        section.append(h5);
+        
+        
+
+
+
+    }
+
+
+
+
 
 
     //EVENT LISTENERS
@@ -26,7 +58,7 @@ $(document).ready(function() {
        
         
 
-         //var for getting weather back
+         //endpoint for getting back the weather
          var requestURL = "https://api.openweathermap.org/data/2.5/weather?zip=" + zip + ",us&appid=6f5ea58cb35532d1813901385fee7376"
 
         
@@ -40,26 +72,16 @@ $(document).ready(function() {
          .then(function(data){
              console.log(data);
              var value = data.name;
+             history.push(value);
             
-             cityNames.push(value);
              
-             console.log(cityNames);
-             localStorage.setItem('cityNames', JSON.stringify(cityNames));
+            //  console.log(cityNames);
+             localStorage.setItem('cityNames', JSON.stringify(history));
              
-
-             $('.city').each(function(){
-                 if ($(this).text() === ''){
-                     // this.
-                     $('.city').append(cityNames)
-                     
-                     
-                 }
- 
-             });
+            
+            
              
- 
- 
- 
+            cityDisplay(value);
          });
  
 
@@ -67,9 +89,8 @@ $(document).ready(function() {
 
 
     });
-
-
-
+    
+    
     
 });
 
