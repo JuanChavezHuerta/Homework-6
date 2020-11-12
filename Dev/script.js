@@ -19,7 +19,18 @@ $(document).ready(function() {
 
 
 
+    function cityWeather(today){
+        var name = today.name;
+        var temp = today.main.temp;
+        var humidity = today.main.humidity;
 
+        $('#name').text("City: " + name);
+        $('#temp').text("Temp: " + temp);
+        $('#humidity').text('Humidity: ' + humidity);
+        
+
+
+    }
     
 
 
@@ -59,7 +70,7 @@ $(document).ready(function() {
         
 
          //endpoint for getting back the weather
-         var requestURL = "https://api.openweathermap.org/data/2.5/weather?zip=" + zip + ",us&appid=6f5ea58cb35532d1813901385fee7376"
+         var requestURL = "https://api.openweathermap.org/data/2.5/weather?zip=" + zip + ",us&units=imperial&appid=6f5ea58cb35532d1813901385fee7376"
 
         
          
@@ -80,7 +91,7 @@ $(document).ready(function() {
              
             
             
-             
+            cityWeather(data);
             cityDisplay(value);
          });
  
