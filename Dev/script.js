@@ -21,7 +21,7 @@ $(document).ready(function() {
 
     function cityWeather(today){
         var name = today.name;
-        var temp = today.main.temp;
+        var temp = Math.floor(today.main.temp);
         var humidity = today.main.humidity;
 
         $('#name').text("City: " + name);
@@ -52,8 +52,69 @@ $(document).ready(function() {
     }
 
 
+    function cardsDisplay(data){
+
+        for(let i = 0; i < data.list.length; i++ ){
+            //console.log(data.list[i].dt_txt)
+            if(data.list[i].dt_txt.indexOf("12:00:00")!== -1){
+                var cardContainer = $('#myCards');
+        var card = $('<div class = "card blue darken-1">');
+        var cardSpan = $('<span class = "card-title">');
+        var cardImg = $('<img href = "iconurl">');
+
+        var cardDate = $('<h5>').text(data.list[i].dt_txt);
+        var cardWidget = $(data.list[i].weather[0].icon);
+        var iconcode = data.list[i].weather[0].icon;
+        var iconurl = $("<img>").attr("src","http://openweathermap.org/img/w/" + iconcode + ".png");
+        var cardTemp = $('<p>').text(data.list[i].main.temp)
+        var cardHumi = data.list[i].main.humidity
+        
+        cardContainer.append(card.append(cardSpan, cardImg, cardDate, iconurl, cardWidget, cardTemp, cardHumi));
+            }
+
+        }
 
 
+
+
+
+
+        
+        //console.log(cardHumi)
+       
+        // $('#wicon').attr('src', iconurl);
+
+        // date.append(cardDate);
+        // widget.append(cardWidget);
+        // temp.append(math.round(cardTemp));
+        
+
+
+    };
+
+
+
+
+    function myCards(zip){
+        // request url for the 5 day forcast
+        var requestURL2 = "https://api.openweathermap.org/data/2.5/forecast?zip=" + zip + ",US&units=imperial&appid=38ed2b19da01786b6087bfa45c0601c4"
+
+        $.ajax({
+            url: requestURL2,
+            method: 'GET'
+            })
+            .then(function(data){
+                console.log(data);
+                cardsDisplay(data);
+            });   
+
+
+
+            
+
+
+
+    }
 
 
     //EVENT LISTENERS
@@ -62,12 +123,13 @@ $(document).ready(function() {
     $('#myButton').on('click', function(){
         var zip = $('#myZip').val()
         event.preventDefault();
+        myCards(zip);
         // console.log()
         // getZip(zip);
         // zip.val().empty();
 
        
-        
+         
 
          //endpoint for getting back the weather
          var requestURL = "https://api.openweathermap.org/data/2.5/weather?zip=" + zip + ",us&units=imperial&appid=6f5ea58cb35532d1813901385fee7376"
@@ -81,7 +143,7 @@ $(document).ready(function() {
          method: 'GET'
          })
          .then(function(data){
-             console.log(data);
+            //  console.log(data);
              var value = data.name;
              history.push(value);
             
@@ -93,6 +155,7 @@ $(document).ready(function() {
             
             cityWeather(data);
             cityDisplay(value);
+            
          });
  
 
