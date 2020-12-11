@@ -18,6 +18,8 @@ $(document).ready(function() {
     }};
 
 
+    if(history.length > 0){}
+
 
     function cityWeather(today){
         var name = today.name;
@@ -38,7 +40,7 @@ $(document).ready(function() {
         
         var section = $('#mySection');
         var divider = $('<div class="divider">');
-        var h5 = $('<h5>' + value + '</h5>');
+        var h5 = $('<h5 class= histy>' + value + '</h5>');
 
 
 
@@ -74,22 +76,6 @@ $(document).ready(function() {
 
         }
 
-
-
-
-
-
-        
-        //console.log(cardHumi)
-       
-        // $('#wicon').attr('src', iconurl);
-
-        // date.append(cardDate);
-        // widget.append(cardWidget);
-        // temp.append(math.round(cardTemp));
-        
-
-
     };
 
 
@@ -118,6 +104,50 @@ $(document).ready(function() {
 
 
     //EVENT LISTENERS
+
+    //listener for the search history.
+    //add an ajax call inside each one to pull weather data
+    //add an ID to the h5 tag
+    
+    $('.histy').on('click', function(){
+     event.preventDefault();
+     var x =[];
+     $('.histy').each(function(index, obj){
+      var cityName = $(this).text()
+      
+      console.log(cityName)
+  
+       x.push($(this).text());
+    
+     });
+     
+    
+
+    //  for(let i = 0; i < x.length; i++){
+         var requestURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + x[0] + "&appid=38ed2b19da01786b6087bfa45c0601c4"
+
+       console.log(x)
+
+        $.ajax({
+         url: requestURL2,
+         method: 'GET'
+       })
+        .then(function(data){
+         cardsDisplay(data)
+        })
+        
+   
+
+    //  }
+
+
+
+    })
+
+
+
+
+
 
     // when someone clicks the button its going to store the value thats inside the id: myButton 
     $('#myButton').on('click', function(){
